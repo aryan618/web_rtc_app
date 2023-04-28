@@ -15,6 +15,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.send("server is runnings");
 });
 
