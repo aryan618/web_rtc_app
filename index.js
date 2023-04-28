@@ -33,6 +33,18 @@ io.on("connection", (socket) => {
   });
 });
 
+// add the following lines to set the necessary headers on the WebSocket upgrade request
+io.engine.on("headers", (headers) => {
+  headers.push({
+    key: "Access-Control-Allow-Origin",
+    value: "*",
+  });
+  headers.push({
+    key: "Access-Control-Allow-Headers",
+    value: "Origin, X-Requested-With, Content-Type, Accept",
+  });
+});
+
 server.listen(PORT, () => {
   console.log("listening on port", PORT);
 });
